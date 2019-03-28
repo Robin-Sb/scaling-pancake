@@ -1,6 +1,6 @@
 package dispatcher;
 
-public class Function {
+public class CustomFunction {
 	public int function (int x) {
 		return x + 2;
 	}

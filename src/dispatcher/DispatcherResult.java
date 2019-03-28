@@ -1,7 +1,21 @@
 package dispatcher;
 
 public class DispatcherResult {
-	public synchronized int getResult() {
-		return 0;
+	
+	public int[] results;
+	
+	public synchronized int[] getResult() {
+		try {
+			wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
 	}
+	
+	public synchronized void putResult() {
+	}
+	
+	
 }
