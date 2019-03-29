@@ -1,21 +1,25 @@
 package dispatcher;
 
+import java.util.ArrayList;
+
 public class DispatcherResult {
 	
-	public int[] results;
+	public ArrayList<Integer> results = new ArrayList<Integer>();
 	
-	public synchronized int[] getResult() {
+	public synchronized Integer[] getResult() {
 		try {
 			wait();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return results;
+		return results.toArray(new Integer[results.size()]);
 	}
 	
-	public synchronized void putResult() {
+	public synchronized void putResult(int result, int n) {
+		results.add(result);
+		if (results.size() == n)
+		{
+			notify();
+		}
 	}
-	
-	
 }
