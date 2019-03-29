@@ -23,7 +23,7 @@ public class Dispatcher implements Runnable {
 	}
 	
 	public void run () {
-		int result = this.f.function(x);
+		int result = this.f.function(this.x);
 		this.result.putResult(result, this.n);
 	}
 }

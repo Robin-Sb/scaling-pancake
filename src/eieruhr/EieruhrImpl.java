@@ -1,3 +1,4 @@
+package eieruhr;
 
 public class EieruhrImpl extends Thread {
 	int milliSeconds;

@@ -1,3 +1,4 @@
+package eieruhr;
 
 public class Eieruhr {
 
