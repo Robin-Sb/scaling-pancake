@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class DispatcherResult {
 	
 	public ArrayList<Integer> results = new ArrayList<Integer>();
+	public int length;
 	
 	public synchronized Integer[] getResult() {
 		try {
-			wait();
+			if (results.size() == length) {
+				wait();
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -16,6 +19,7 @@ public class DispatcherResult {
 	}
 	
 	public synchronized void putResult(int result, int n) {
+		length = n;
 		results.add(result);
 		if (results.size() == n)
 		{
