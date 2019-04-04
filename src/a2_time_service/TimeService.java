@@ -10,12 +10,12 @@ import java.net.Socket;
 
 public class TimeService {
 	public static void serveSocket() throws IOException {
-		ServerSocket timeService = new ServerSocket(75);
+		ServerSocket timeService = new ServerSocket(8085);
 		
 		try {
-			System.out.println("Starting TimeService");
+			System.out.println("Open for a new connection.");
 			Socket clientSocket = timeService.accept();
-			System.out.println("... accepted");
+			System.out.println("Client " + clientSocket.getInetAddress() + " accepted");
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(clientSocket.getInputStream()));
 			BufferedWriter out = new BufferedWriter(
@@ -30,16 +30,15 @@ public class TimeService {
 				inputLine = in.readLine();
 				if (!inputLine.equals("date") && !inputLine.equals("time") ) {
 					closeConnection = true;
-					out.write("Disconnected");
+					out.write("disconnected");
 					out.newLine();
 					out.flush();
 					break;
 				}
-				System.out.println(inputLine);
+				System.out.println("Received input: " + inputLine);
 				if (inputLine.equals("date")) {
 					String date = Clock.getDate();
 					out.write(date);
-					System.out.println((date));
 				}
 				if (inputLine.equals("time")) {
 					out.write(Clock.getTime());

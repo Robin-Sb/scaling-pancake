@@ -5,8 +5,12 @@ import java.io.IOException;
 public class SocketServerMain {
 	
 	public static void main(String[] args) {
+		System.out.println("Starting TimeService");
 		try {
-			TimeService.serveSocket();
+			while(true)
+			{
+				TimeService.serveSocket();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
