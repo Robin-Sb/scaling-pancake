@@ -7,10 +7,7 @@ public class SocketServerMain {
 	public static void main(String[] args) {
 		System.out.println("Starting TimeService");
 		try {
-			while(true)
-			{
-				TimeService.serveSocket();
-			}
+			TimeService.serveSocket();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
